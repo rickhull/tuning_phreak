@@ -50,6 +50,9 @@ module TuningPhreak
     def initialize(a4: A4, scale: :c_major)
       @a4 = a4
       @c4 = @a4 * A_MINOR.fetch(:c) / 2 # a4 to c5 back down to c4
+      # alternatively:
+      # @c4 = 1 / C_MAJOR.fetch(:a)
+
       case scale
       when :a_minor
         @scale = A_MINOR
