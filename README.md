@@ -28,3 +28,15 @@ or notes per octave.  Of those 12 keys, 7 are white and 5 are black, laid out
 in a particular pattern.  The pattern is tangentially important, but what
 is more important is that these 12 keys provide a simple ordering.  In 99% of
 all uses of a piano, we just need a 12 step simple ordering.
+
+### 12 Steps?
+
+These 12 steps can be referred to mainly as "semitones" but also sometimes as
+"half steps".  A "whole step" always refers to exactly two "half steps".  A
+"tone" is always composed of exactly two "semitones".  "Tones" and "steps" may
+be used somewhat interchangeably, but keep in mind that "tone" is more of
+theoretical term, while "step" is more of a pedogogical term".  We will prefer
+"tone".
+
+So technically we have 12 semitones, or half-steps, which correspond to 6
+tones.
