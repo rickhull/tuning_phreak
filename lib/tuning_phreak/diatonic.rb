@@ -26,12 +26,24 @@ module TuningPhreak
 
     MAJOR_THIRD = C_MAJOR.fetch(:e)
     MINOR_THIRD = A_MINOR.fetch(:c)
+
     PERFECT_FOURTH = C_MAJOR.fetch(:f)
     PERFECT_FIFTH = C_MAJOR.fetch(:g)
 
+    MINOR_SIXTH = A_MINOR.fetch(:f)
+    MAJOR_SIXTH = C_MAJOR.fetch(:a)
+
+    MINOR_SEVENTH = A_MINOR.fetch(:g)
+    MAJOR_SEVENTH = C_MAJOR.fetch(:b)
+
     # we can fill in some black keys
+    # this ends up defining the key signature for C-minor and A-major
     C_MAJOR[:e_flat] = MINOR_THIRD
+    C_MAJOR[:a_flat] = MINOR_SIXTH
+    C_MAJOR[:b_flat] = MINOR_SEVENTH
     A_MINOR[:c_sharp] = MAJOR_THIRD
+    A_MINOR[:f_sharp] = MAJOR_SEVENTH
+    A_MINOR[:g_sharp] = MAJOR_SEVENTH
 
     attr_reader :a4, :c4, :scale, :fundamental
 
