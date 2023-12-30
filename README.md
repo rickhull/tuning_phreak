@@ -19,3 +19,12 @@ musical notes.  Certain important musical intervals, like thirds, fourths,
 fifths, and octaves, will sound "good" in these systems, with some objective,
 mathematical sense of "good" that lends itself to comparison.  Some systems
 sound better than others in different situations.  There will be tradeoffs.
+
+## Pianos
+
+Pianos traditionally have 12 keys
+(a key is a physical button or lever which triggers a unique note)
+or notes per octave.  Of those 12 keys, 7 are white and 5 are black, laid out
+in a particular pattern.  The pattern is tangentially important, but what
+is more important is that these 12 keys provide a simple ordering.  In 99% of
+all uses of a piano, we just need a 12 step simple ordering.
