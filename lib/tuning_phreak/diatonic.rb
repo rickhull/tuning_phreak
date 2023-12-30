@@ -45,6 +45,10 @@ module TuningPhreak
     A_MINOR[:f_sharp] = MAJOR_SEVENTH
     A_MINOR[:g_sharp] = MAJOR_SEVENTH
 
+    MINOR_PENTATONIC = [1, MINOR_THIRD,
+                        PERFECT_FOURTH, PERFECT_FIFTH,
+                        MINOR_SEVENTH]
+
     attr_reader :a4, :c4, :scale, :fundamental
 
     def initialize(a4: A4, scale: :c_major)
