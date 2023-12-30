@@ -24,6 +24,15 @@ module TuningPhreak
       octave: 2/1r,
     }
 
+    MAJOR_THIRD = C_MAJOR.fetch(:e)
+    MINOR_THIRD = A_MINOR.fetch(:c)
+    PERFECT_FOURTH = C_MAJOR.fetch(:f)
+    PERFECT_FIFTH = C_MAJOR.fetch(:g)
+
+    # we can fill in some black keys
+    C_MAJOR[:e_flat] = MINOR_THIRD
+    A_MINOR[:c_sharp] = MAJOR_THIRD
+
     attr_reader :a4, :c4, :scale, :fundamental
 
     def initialize(a4: A4, scale: :c_major)
