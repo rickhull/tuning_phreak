@@ -49,7 +49,7 @@ module TuningPhreak
                         PERFECT_FOURTH, PERFECT_FIFTH,
                         MINOR_SEVENTH]
 
-    attr_reader :a4, :c4, :scale, :fundamental
+    attr_reader :a4, :c4, :scale, :root
 
     def initialize(a4: A4, scale: :c_major)
       @a4 = a4
@@ -60,10 +60,10 @@ module TuningPhreak
       case scale
       when :a_minor
         @scale = A_MINOR
-        @fundamental = @a4
+        @root = @a4
       when :c_major
         @scale = C_MAJOR
-        @fundamental = @c4
+        @root = @c4
       else
         raise(BadValue, scale.inspect)
       end
@@ -72,10 +72,10 @@ module TuningPhreak
     def frequency(note_sym, octave_num)
       raise(BadValue, note_sym.inspect) unless @scale.key?(note_sym)
       # below C4 is B3, not B4
-      if @fundamental == @a4 and ![:a, :b].include?(note_sym)
+      if @root == @a4 and ![:a, :b].include?(note_sym)
         octave_num -= 1
       end
-      @fundamental *
+      @root *
         @scale.fetch(note_sym) *
         @scale.fetch(:octave) ** (octave_num - 4)
     end
