@@ -5,7 +5,7 @@ include TuningPhreak
 
 describe Diatonic do
   it "uses whole number ratios to describe perfect intervals" do
-    d = Diatonic.new(a4: 440, scale: :c_major)
+    d = Diatonic.new(a4: 440, scale: :c)
     c4 = d.freq('C4')
     e4 = d.freq('E4')
     f4 = d.freq('F4')
@@ -13,13 +13,13 @@ describe Diatonic do
     a4 = d.freq('A4')
 
     expect(a4).must_equal 440.0
-    expect(e4 / c4).must_equal Diatonic::C_MAJOR.fetch(:e)
-    expect(f4 / c4).must_equal Diatonic::C_MAJOR.fetch(:f)
-    expect(g4 / c4).must_equal Diatonic::C_MAJOR.fetch(:g)
+    expect(e4 / c4).must_equal Diatonic::C.fetch(:e)
+    expect(f4 / c4).must_equal Diatonic::C.fetch(:f)
+    expect(g4 / c4).must_equal Diatonic::C.fetch(:g)
   end
 
   it "determines the frequency of any white key on a piano" do
-    d = Diatonic.new(a4: 440, scale: :a_minor)
+    d = Diatonic.new(a4: 440, scale: :a)
     prior = 0
     %w[C4 D4 E4 F4 G4 A4 B4].each { |wk|
       freq = d.freq(wk)
@@ -31,7 +31,7 @@ describe Diatonic do
     }
   end
 
-  [:c_major, :a_minor].each { |scale|
+  [:c, :a].each { |scale|
     it "accepts any value for the frequency of A4" do
       d = Diatonic.new(a4: 440, scale: scale)
       expect(d.freq('A4')).must_equal 440.0
@@ -49,7 +49,7 @@ describe Diatonic do
     a_major = [:a, :b, :c_sharp, :d, :e, :f_sharp, :g_sharp]
 
     # get every frequency for C Minor
-    d = Diatonic.new(a4: 440, scale: :c_major)
+    d = Diatonic.new(a4: 440, scale: :c)
     c_minor.each { |note|
       expect(d.frequency(note, 4)).must_be_kind_of Numeric
     }
@@ -59,7 +59,7 @@ describe Diatonic do
     expect(d.frequency(:b_flat, 2)).must_be :<, d.frequency(:b, 2)
 
     # get every frequency for A Major
-    d = Diatonic.new(a4: 441, scale: :a_minor)
+    d = Diatonic.new(a4: 441, scale: :a)
     a_major.each { |note|
       expect(d.frequency(note, 3)).must_be_kind_of Numeric
     }
