@@ -54,31 +54,34 @@ module TuningPhreak
       octave: 12,
     }
 
-    def self.structure(name = nil)
-      case name
-      when nil
+    # just a default
+    SYSTEM = :semitones # aka Equal Temperament
+
+    def self.structure(system = SYSTEM)
+      case system
+      when :commas
         COMMAS
-      when :equal
+      when :equal, :semitones
         EQUAL_SEMITONES
       else
-        raise(BadValue, name.inspect)
+        raise(BadValue, system.inspect)
       end
     end
 
-    def self.frequency(note_sym, octave_num, a4: A4, name: nil)
+    def self.frequency(note_sym, octave_num, a4: A4, system: SYSTEM)
       # below C4 is B3, not B4
       adjusted_octave = /\A[c-g]/.match(note_sym) ? octave_num - 1 : octave_num
-      structure = self.structure(name)
+      structure = self.structure(system)
       octave = structure.fetch(:octave) # 53 commas? 12 semitones?
       commas = structure.fetch(note_sym) + (adjusted_octave - 4) * octave
       a4 * 2 ** (commas.to_f / octave)
     end
 
-    attr_reader :a4, :name
+    attr_reader :a4, :system
 
-    def initialize(a4: A4, name: nil)
+    def initialize(a4: A4, system: SYSTEM)
       @a4 = a4
-      @name = name
+      @system = system
     end
 
     def freq(note_str)
@@ -87,7 +90,7 @@ module TuningPhreak
     end
 
     def frequency(note_sym, octave_num)
-      Temperament.frequency(note_sym, octave_num, a4: @a4, name: @name)
+      Temperament.frequency(note_sym, octave_num, a4: @a4, system: @system)
     end
   end
 end

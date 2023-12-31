@@ -4,9 +4,9 @@ require 'minitest/autorun'
 include TuningPhreak
 
 describe Temperament do
-  [nil, :equal].each { |name|
+  [:semitones, :commas].each { |system|
     it "converts musical notes to audio frequencies" do
-      t = Temperament.new(name: name)
+      t = Temperament.new(system: system)
       a4 = t.freq('A4')
       b4 = t.freq('B4')
 
@@ -15,14 +15,14 @@ describe Temperament do
     end
 
     it "allows any frequency for A4" do
-      t = Temperament.new(a4: 442, name: name)
+      t = Temperament.new(a4: 442, system: system)
       expect(t.freq('A4')).must_equal 442.0
       expect(t.freq('A5')).must_equal 884.0
       expect(t.freq('A3')).must_equal 221.0
     end
 
     it "respects octave doubling" do
-      t = Temperament.new(name: name)
+      t = Temperament.new(system: system)
       c3 = t.freq('C3')
       c4 = t.freq('C4')
       c5 = t.freq('C5')
