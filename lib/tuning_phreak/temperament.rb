@@ -57,7 +57,7 @@ module TuningPhreak
     # just a default
     SYSTEM = :semitones # aka Equal Temperament
 
-    def self.structure(system = SYSTEM)
+    def self.structure(system)
       case system
       when :commas
         COMMAS
