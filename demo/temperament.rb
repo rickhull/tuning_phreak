@@ -7,14 +7,7 @@ commas = Temperament.new(system: :commas)
 semitones = Temperament.new(system: :semitones)
 
 notes = {
-#  a_flat: { # :c_major
-#    minor_third: :b,
-#    major_third: :c,
-#    fourth: :d_flat, # no diatonic
-#    fifth: :e_flat,
-#  },
-
-  a: { # :a_minor
+  a: {
     second: :b,
     minor_third: :c,
     major_third: :c_sharp,
@@ -26,23 +19,7 @@ notes = {
     major_seventh: :g_sharp,
   },
 
-  # a_sharp: TODO?
-
-#  b_flat: { # :c_major
-#    minor_third: :d_flat, # no diatonic
-#    major_third: :d,
-#    fourth: :e_flat,
-#    fifth: :f,
-#  },
-
-#  b: { # :a_minor
-#    minor_third: :d,
-#    major_third: :d_sharp, # no diatonic
-#    fourth: :e,
-#    fifth: :f_sharp,
-#  },
-
-  c: { # :c_major
+  c: {
     second: :d,
     minor_third: :e_flat,
     major_third: :e,
@@ -58,6 +35,9 @@ notes = {
 octave_num = 4
 
 notes.each { |root, intervals|
+  puts
+  puts "Key: #{root.upcase}"
+  puts "==="
   diatonic = Diatonic.new(scale: root)
 
   diatonic_root = diatonic.frequency(root, octave_num)
@@ -124,12 +104,8 @@ notes.each { |root, intervals|
   }
 
   puts "Error relative to pure diatonic intervals:"
-  puts "==="
+  puts "---"
   puts format("   Commas: %.3f percentage points per octave", commas_points)
   puts format("Semitones: %.3f percentage points per octave", semitones_points)
   puts
 }
-
-def equivalent?(flt1, flt2, diff = 0.0001)
-  (flt2 - flt1).abs <= diff
-end
