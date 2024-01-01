@@ -44,7 +44,7 @@ module TuningPhreak
     C[:a_flat] = MINOR_SIXTH
     C[:b_flat] = MINOR_SEVENTH
     A[:c_sharp] = MAJOR_THIRD
-    A[:f_sharp] = MAJOR_SEVENTH
+    A[:f_sharp] = MAJOR_SIXTH
     A[:g_sharp] = MAJOR_SEVENTH
 
     MINOR_PENTATONIC = [1, MINOR_THIRD,
