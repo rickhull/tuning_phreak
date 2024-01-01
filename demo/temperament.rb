@@ -67,11 +67,7 @@ notes.each { |root, intervals|
 
   intervals.each { |type, key|
     # account for B3 - C4 increment
-    onum = if root == :a and /\A[c-g]/.match(key)
-             octave_num + 1
-           else
-             octave_num
-           end
+    onum = (root == :a and /\A[c-g]/.match(key)) ? octave_num + 1 : octave_num
 
     df = diatonic.frequency(key, onum) rescue 0
     cf = commas.frequency(key, onum)

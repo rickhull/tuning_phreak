@@ -2,12 +2,12 @@ require 'tuning_phreak'
 
 module TuningPhreak
   class Temperament
-    # this is premised upon the definition chromatic and diatonic semitones:
-    # chromatic semitone (A - A#) = 5 commas
-    # diatonic  semitone (A - Bb) = 4 commas
-    # an octave is 5 tones and 2 semitones, aka 12 semitones
-    # 5 chromatic semitones and 7 diatonic semitones
-    # 5*5 + 7*4 = 53 commas per octave
+    # This is premised upon the definition chromatic and diatonic semitones:
+    #   Chromatic semitone (A - A#) = 5 commas
+    #   Diatonic  semitone (A - Bb) = 4 commas
+    # An octave is 5 tones and 2 semitones, aka 12 semitones
+    #   5 chromatic semitones and 7 diatonic semitones
+    #   5*5 + 7*4 = 53 commas per octave
     COMMAS = {
       a_flat: -5,  # chromatic -5
       a: 0,
@@ -29,10 +29,9 @@ module TuningPhreak
       octave: 53,  # diatonic  +4 = 53
     }
 
-    # here we have 12 semitones of equal width
-    # this provides equal temperament tuning
-    # note that e.g. b_flat and a_sharp are defined to be the same
-    # this matches how a piano is laid out
+    # Here we have 12 semitones of equal width aka Equal Temperament
+    # Note that e.g. b_flat and a_sharp are defined to be the same
+    # This matches how a piano is laid out
     EQUAL_SEMITONES = {
       a_flat: -1,
       a: 0,
@@ -55,7 +54,7 @@ module TuningPhreak
     }
 
     # just a default
-    SYSTEM = :semitones # aka Equal Temperament
+    SYSTEM = :semitones # Equal Temperament
 
     def self.structure(system)
       case system

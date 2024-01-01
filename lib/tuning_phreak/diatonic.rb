@@ -2,6 +2,9 @@ require 'tuning_phreak'
 
 module TuningPhreak
   class Diatonic
+    # https://en.wikipedia.org/wiki/Ptolemy%27s_intense_diatonic_scale
+    #   A form of Just Intonation
+
     # only C major here; white keys
     C = {
       c: 1/1r,
@@ -76,7 +79,15 @@ module TuningPhreak
 
     def frequency(note_sym, octave_num = 4)
       raise(BadValue, note_sym.inspect) unless @scale.key?(note_sym)
-      # below C4 is B3, not B4
+
+      # if the root differs from C, then anything above C should be lowered
+      # for the sake of the math calculation
+
+      # consider: A4 B4 C5
+      # these notes are sequential
+      # but with an A root, we need count the octaves relative to A
+      # so we pretend C5 is C4;  D5 would be D4; etc
+
       if @root == @a4 and ![:a, :b].include?(note_sym)
         octave_num -= 1
       end
