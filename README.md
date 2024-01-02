@@ -42,5 +42,17 @@ that "tone" is more of theoretical term, while "step" is more of a pedogogical
 term.
 We will prefer "tone".
 
-So technically we have 12 semitones, or half-steps, which correspond to 6
-tones.
+### Semitones
+
+So technically we have 12 semitones, or half-steps, which correspond, roughly,
+to 6 tones.  7 white keys and 5 black keys.  One complication is that we can,
+but don't have to, distinguish between two types of semitones:
+
+* Chromatic semitone: a semitone "within a note" (e.g. A to A-sharp)
+* Diatonic semitone: a semitone "across two different notes" (e.g. A to B-flat)
+
+In this view, a tone is defined as a chromatic semitone plus a diatonic
+semitone.  Similarly to how a piano has 7 white keys and 5 black keys, an
+octave has 7 diatonic and 5 chromatic semitones.  Since there is an imbalance,
+we can only match 5 chromatic semitones to 5 diatonic semitones, we can think
+of an octave as 5 tones plus two diatonic semitones.
